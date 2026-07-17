@@ -1,0 +1,34 @@
+services:
+  ollama:
+    image: ollama/ollama:latest
+    container_name: graphify-ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  graphify:
+    build: .
+    container_name: graphify
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434/v1
+      - OLLAMA_MODEL=${OLLAMA_MODEL:-qwen2.5-coder:7b}
+    volumes:
+      - ./target:/workspace/target
+      - graphify-out:/workspace/graphify-out
+    working_dir: /workspace
+    ports:
+      - "8080:8080"
+
+volumes:
+  ollama-models:
+  graphify-out:
