@@ -1,0 +1,15 @@
+# Drawing Analyzer skill — generated indexes/sheets and takeoff outputs, never commit these
+0.ai-context/
+outputs/
+sheets/*.pdf
+sheets/*.txt
+sheets/*.png
+indexes/drawings.md
+indexes/sheet-classification.md
+indexes/cross-reference.md
+indexes/symbol-library.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
