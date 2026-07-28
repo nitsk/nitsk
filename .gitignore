@@ -1,0 +1,8 @@
+# .NET
+bin/
+obj/
+
+# Python
+__pycache__/
+*.egg-info/
+.venv/

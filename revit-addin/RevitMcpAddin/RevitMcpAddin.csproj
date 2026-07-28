@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Revit 2019-2024 run on .NET Framework 4.8. For Revit 2025+ retarget to net8.0-windows. -->
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Matches the Revit release these API packages are built against, e.g. 2022/2023/2024. -->
+    <RevitVersion Condition="'$(RevitVersion)' == ''">2024</RevitVersion>
+    <RootNamespace>RevitMcpAddin</RootNamespace>
+    <AssemblyName>RevitMcpAddin</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Ships the real Revit API reference assemblies as a NuGet package (Local="false", CopyLocal="false")
+         so the project builds without a local Revit install. Requires an actual Revit install at runtime. -->
+    <PackageReference Include="Nice3point.Revit.Api.RevitAPI" Version="$(RevitVersion).*" />
+    <PackageReference Include="Nice3point.Revit.Api.RevitAPIUI" Version="$(RevitVersion).*" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="RevitMcpAddin.addin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
