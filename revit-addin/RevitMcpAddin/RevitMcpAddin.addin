@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Revit MCP Bridge</Name>
+    <Assembly>RevitMcpAddin.dll</Assembly>
+    <AddInId>7C9E6A2E-2C7A-4C1D-9C3E-2B7B6E9F1A10</AddInId>
+    <FullClassName>RevitMcpAddin.App</FullClassName>
+    <VendorId>NITSK</VendorId>
+    <VendorDescription>nitsk/nitsk</VendorDescription>
+  </AddIn>
+</RevitAddIns>
